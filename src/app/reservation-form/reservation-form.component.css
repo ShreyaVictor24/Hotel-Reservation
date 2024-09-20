@@ -1,0 +1,67 @@
+body {
+  background-image: url("https://images.unsplash.com/photo-1514890084135-f16d926f4d03?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDN8fHxlbnwwfHx8fHw%3D");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+}
+
+.res-form {
+  background-color: #5C445D;
+  opacity: .95;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.res-form fieldset {
+  border: none;
+}
+
+.res-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #F8972C;
+}
+
+.res-form input[type="date"],
+.res-form input[type="number"],
+.res-form select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.res-form select {
+  cursor: pointer;
+}
+
+.res-form button[type="submit"]{
+  cursor: pointer;
+  font-weight: bold;
+  color: #171528;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-left: 40%;
+}
+
+.res-form img {
+  vertical-align: middle;
+  margin-right: 15px;
+}
+
+.res-form p {
+  color: #F8972C;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
