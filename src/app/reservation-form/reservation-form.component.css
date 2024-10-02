@@ -25,10 +25,12 @@ body {
   margin-bottom: 8px;
   font-weight: bold;
   color: #F8972C;
+  width: 100%;
 }
 
 .res-form input[type="date"],
 .res-form input[type="number"],
+.res-form input[type="text"], /* Added style for text inputs */
 .res-form select {
   width: 100%;
   padding: 8px;

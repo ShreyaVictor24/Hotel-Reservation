@@ -1,7 +1,24 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Garamond", Times, serif;
+  background-color: #c0c2c5;
+  color: #333;
+}
+
+.full-height {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 10;
+  padding: 10px;
   background-color: #c0c2c5;
   color: #333;
   font-family: "Garamond", Times, serif;
@@ -16,33 +33,32 @@ h1 {
   background-color: #c0c2c5;
 }
 
-nav{
+nav {
   padding: 10px;
   text-align: center;
   background-color: #26150a;
 }
 
-nav ul li{
+nav ul li {
   list-style: none;
   display: inline-block;
   padding: 10px;
   margin-right: 50px;
   color: white;
-
 }
 
 nav ul li a:hover {
-  background-color: #8b6d55 ;
-  padding: 15px 20px ;
-  text-decoration: underline ;
+  background-color: #8b6d55;
+  padding: 15px 20px;
+  text-decoration: underline;
   border-radius: 8px;
   transition: background-color 0.2s ease;
   cursor: pointer;
 }
+
 a.active {
   font-weight: bold;
 }
-
 
 h2 {
   text-align: left;
@@ -55,15 +71,14 @@ h2 {
 
 img {
   display: block;
-  margin-left: auto ;
+  margin-left: auto;
   margin-right: auto;
   border: solid;
 }
 
-/* About Section */
 .About {
   background-color: #fff;
-  padding-left:25px;
+  padding-left: 25px;
   padding-right: 50px;
   padding-top: 0px;
   padding-bottom: 25px;
@@ -91,9 +106,8 @@ img {
   font-weight: 550;
 }
 
-/* Contact Section */
 .contact {
-  padding-left:25px;
+  padding-left: 25px;
   padding-right: 50px;
   padding-top: 0px;
   padding-bottom: 25px;
@@ -119,16 +133,3 @@ img {
   padding: 10px;
   font-weight: 550;
 }
-/*
-
-@media (max-width: 600px) {
-  .reservation-buttons button {
-      width: 100%;
-      margin: 10px 0;
-  }
-
-  .About, .contact {
-      margin: 10px;
-      padding: 15px;
-  }
-}*/

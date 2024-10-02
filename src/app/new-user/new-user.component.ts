@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgForm, FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-user',
@@ -17,7 +18,7 @@ export class NewUserComponent {
     password: ''
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   onSubmit(userForm: NgForm) {
     if (userForm.valid) {
@@ -26,6 +27,7 @@ export class NewUserComponent {
       this.http.post('https://hotel-booking-380ab-default-rtdb.firebaseio.com/newuser.json', this.userData).subscribe(
         response => {
           console.log('User created successfully:', response);
+          this.router.navigate(['/login']);
         },
         error => {
           console.error('Error creating user:', error);

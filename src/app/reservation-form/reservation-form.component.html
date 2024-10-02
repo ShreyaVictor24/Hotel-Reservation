@@ -50,6 +50,17 @@
             <option value="executive-suite">Executive suite</option>
           </select>
           <br><br>
+          <label for="phone-number">Phone Number: </label>
+          <input
+            type="tel"
+            id="phone-number"
+            name="phoneNumber"
+            [(ngModel)]="reservationData.phoneNumber"
+            placeholder="Enter your phone number"
+            required
+            pattern="[0-9]{10}">
+          <br><br>
+
 
           <p>
             <img src="https://static-00.iconduck.com/assets.00/warning-icon-512x511-3vl9qoze.png" width="20" height="20">

@@ -5,7 +5,7 @@ import { NewUserComponent } from './new-user/new-user.component';
 import { ReservationFormComponent } from './reservation-form/reservation-form.component';
 
 export const routes: Routes = [
-  { path: '', component:HomePageComponent},
+  { path: 'home', component:HomePageComponent},
   { path:'login', component:LoginComponent},
   { path:'reservation-form', component:ReservationFormComponent},
   { path:'new-user',component:NewUserComponent}

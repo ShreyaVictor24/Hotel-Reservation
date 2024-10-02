@@ -1,14 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
-// Define an interface for your form data
-interface LoginForm {
-  username: string;
-  password: string;
-}
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,35 +12,51 @@ interface LoginForm {
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-  constructor(private http: HttpClient) {}
+export class LoginComponent {
+  loading: boolean = false;  // To track loading state
 
-  ngOnInit(): void {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   onSubmit(form: NgForm) {
     if (form.valid) {
-      const postData: LoginForm = form.value; // Type the postData variable
-      console.log('onSubmit called with', postData);
+      const postData = form.value;
+      this.loading = true;  // Set loading to true while waiting for the response
 
-      this.http.post('https://hotel-booking-380ab-default-rtdb.firebaseio.com/post.json', postData)
-        .subscribe(
-          responseData => {
-            console.log('Response Data:', responseData);
-          },
-          error => {
-            console.error('Error:', error);
+      this.http.post<any>('https://hotel-booking-380ab-default-rtdb.firebaseio.com/post.json', postData)
+      .subscribe(
+        response => {
+          this.loading = false;  // Reset loading when the response is received
+
+          // Show popup regardless of success or failure
+          if (response.success) {
+            alert('Login successful!');
+          } else {
+            alert('Login successful!');
           }
-        );
+
+          // Navigate to home page regardless of the result
+          this.router.navigate(['/home']);
+        },
+        error => {
+          this.loading = false;
+          console.error('Error occurred during login:', error);
+
+          // Show generic popup for any error
+          alert('An error occurred. Please try again.');
+
+          // Navigate to home page regardless of the error
+          this.router.navigate(['/home']);
+        }
+      );
     }
   }
 
   togglePasswordVisibility(event: Event): void {
     const passwordInput = document.getElementById('password') as HTMLInputElement;
     if ((event.target as HTMLInputElement).checked) {
-        passwordInput.type = 'text'; // Show password
+      passwordInput.type = 'text';
     } else {
-        passwordInput.type = 'password'; // Hide password
+      passwordInput.type = 'password';
     }
-}
-
+  }
 }

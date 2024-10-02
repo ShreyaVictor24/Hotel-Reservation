@@ -17,7 +17,8 @@ export class ReservationFormComponent implements OnInit { // Implement OnInit in
     checkOutDate: '',
     adultCount: 1,
     childrenCount: 0,
-    roomType: 'single-room'
+    roomType: 'single-room',
+    phoneNumber: ''
   };
 
   constructor(private http: HttpClient) {}
@@ -32,10 +33,17 @@ export class ReservationFormComponent implements OnInit { // Implement OnInit in
       const postData = form.value; // Extract the form values
       console.log('Reservation Data:', postData);
 
-      this.http.post('https://hotel-booking-380ab-default-rtdb.firebaseio.com/reservation.json', postData)
+      // Explicitly type the response as { name: string }
+      this.http.post<{ name: string }>('https://hotel-booking-380ab-default-rtdb.firebaseio.com/reservation.json', postData)
         .subscribe(
-          response => {
+          (response: { name: string }) => {
             console.log('Response:', response);
+
+            // Get the booking ID from the response (Firebase assigns a unique ID to each reservation)
+            const bookingId = response.name;
+
+            // Display the booking ID in a pop-up alert
+            alert('Your booking ID is: ' + bookingId);
           },
           error => {
             console.error('Error:', error);
@@ -43,6 +51,7 @@ export class ReservationFormComponent implements OnInit { // Implement OnInit in
         );
     }
   }
+
   onFetchReservations() {
     this.http.get<{ [key: string]: any }>('https://hotel-booking-380ab-default-rtdb.firebaseio.com/reservation.json')
       .subscribe(reservations => {
