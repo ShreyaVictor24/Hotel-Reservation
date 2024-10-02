@@ -4,28 +4,25 @@
       <form (ngSubmit)="onSubmit(form)" #form="ngForm">
           <div class="input-group">
               <label for="username">Username</label>
-              <input type="text" id="username" name="username" ngModel placeholder="Username">
+              <input type="text" id="username" name="username" ngModel placeholder="Username" required>
+              <!-- Display error message if the username is not filled -->
+              <div *ngIf="form.submitted && form.controls['username']?.invalid" class="error">
+                  Username is required
+              </div>
           </div>
           <div class="input-group">
               <label for="password">Password</label>
-              <input type="password" id="password" name="password" ngModel placeholder="Password">
-              <input type="checkbox" name="show-pwd" onclick="myFunction()">Show Password
+              <input type="password" id="password" name="password" ngModel placeholder="Password" required>
+              <input type="checkbox" id="showPassword" (change)="togglePasswordVisibility($event)"> Show Password
+              <!-- Display error message if the password is not filled -->
+              <div *ngIf="form.submitted && form.controls['password']?.invalid" class="error">
+                  Password is required
+              </div>
           </div>
-          <button type="submit">Login</button>
+          <button type="submit" [disabled]="!form.valid">Login</button>
       </form>
       <br>
       <p>New User?</p>
       <a href="/new-user" style="text-decoration: none;">Create Account</a>
-      <script>
-        function myFunction() {
-          var passwordInput = document.getElementById("password");
-          var showPasswordCheckbox = document.getElementById("showPassword");
-          if (showPasswordCheckbox.checked) {
-            passwordInput.type = "text";
-          } else {
-            passwordInput.type = "password";
-          }
-        }
-        </script>
   </div>
 </body>
